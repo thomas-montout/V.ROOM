@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import models from "../data/cars";
 
 type Props = {
@@ -15,12 +16,12 @@ function HomeCard({ car }: Props) {
       <div className="absolute" />
       <div className="relative z-10 flex h-full flex-row items-end justify-between p-4">
         <span className="text-black text-lg font-bold mb-2">{car.name}</span>
-        <a
-          href="/neufs"
+        <Link
+          to={`/product/${car.id}`}
           className="inline-block w-fit bg-[#c40000] text-white px-4 py-2 rounded-sm text-sm font-medium hover:bg-[#a30000] transition-colors"
         >
           Découvrir
-        </a>
+        </Link>
       </div>
     </div>
   );
