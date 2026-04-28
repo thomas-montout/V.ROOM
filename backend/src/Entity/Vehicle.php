@@ -43,6 +43,12 @@ abstract class Vehicle
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $video = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +158,30 @@ abstract class Vehicle
     public function setPrice(float $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getVideo(): ?string
+    {
+        return $this->video;
+    }
+
+    public function setVideo(?string $video): static
+    {
+        $this->video = $video;
 
         return $this;
     }
