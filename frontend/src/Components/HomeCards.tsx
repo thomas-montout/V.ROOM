@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import type models from "../data/cars";
 
 type Props = {
   car: (typeof models)[0];
 };
-  
+
 function HomeCard({ car }: Props) {
   return (
     <div className="relative overflow-hidden rounded-sm shadow-md border border-gray-200 h-80">

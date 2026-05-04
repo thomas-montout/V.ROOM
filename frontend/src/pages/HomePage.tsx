@@ -16,7 +16,6 @@ function HomePage() {
           Votre navigateur ne supporte pas la balise vidéo.
         </video>
 
-        {/* Le calque sombre pour la lisibilité du texte */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
       </section>
 
@@ -28,7 +27,8 @@ function HomePage() {
           Découvrez une nouvelle expérience d'achat de sneakers, où style et
           durabilité se rencontrent.
         </p>
-        <div className="flect flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
+          {" "}
           <a
             href="/neufs"
             className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors"
@@ -36,14 +36,14 @@ function HomePage() {
             Explorer les Neufs
           </a>
           <a
-            href="/occasion"
-            className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors ml-4"
+            href="/occasions"
+            className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors mt-4 sm:mt-0 sm:ml-4" // Ajustement de l'espacement pour mobile
           >
             Explorer les Occasions
           </a>
           <a
             href="/bons-plans"
-            className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors ml-4"
+            className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors mt-4 sm:mt-0 sm:ml-4" // Ajustement de l'espacement pour mobile
           >
             Explorer les Bons Plans
           </a>
