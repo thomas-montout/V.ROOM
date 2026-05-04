@@ -52,7 +52,7 @@ abstract class Vehicle
 
     #[ORM\Column]
     #[Groups(['vehicle:read'])]
-    private ?float $price = null;
+    private ?string $price = null; // Recommandation: Utiliser 'string' pour 'decimal' ou 'int' pour les centimes
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['vehicle:read'])]
@@ -168,7 +168,7 @@ abstract class Vehicle
         return $this->price;
     }
 
-    public function setPrice(float $price): static
+    public function setPrice(string $price): static // Ajuster le type du setter en conséquence
     {
         $this->price = $price;
 

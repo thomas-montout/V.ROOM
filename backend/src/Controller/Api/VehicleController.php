@@ -34,6 +34,6 @@ class VehicleController extends AbstractController
             ['groups' => 'vehicle:read']
         );
         
-        return new JsonResponse($json, 200, [], true); // true = JSON déjà encodé
+        return new JsonResponse($json, 200, [], true); 
     }
 }
