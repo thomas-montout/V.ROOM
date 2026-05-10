@@ -23,7 +23,7 @@ export default function VehicleCard({ vehicle, dark = false }: Props) {
       <div className="relative aspect-[16/10] overflow-hidden bg-vroom-surface">
         {mainImg ? (
           <img
-            src={mainImg}
+            src={`/cars/${mainImg}`}
             alt={`${vehicle.brand} ${vehicle.model}`}
             className="w-full h-full object-cover"
           />

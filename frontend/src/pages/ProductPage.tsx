@@ -117,7 +117,7 @@ export default function ProductPage() {
           </h2>
           <div className="aspect-video w-full max-w-4xl">
             <video
-              src={vehicle.video}
+              src={`/${vehicle.video}`}
               controls
               className="w-full h-full object-cover rounded"
             />
