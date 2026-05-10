@@ -68,4 +68,26 @@ class VehicleController extends AbstractController
         );
         return new JsonResponse($json, 200, [], true);
     }
+
+    #[Route('/{id}', name: 'show', methods: ['GET'], requirements: ['id' => '\d+'])]
+    public function show(
+        int $id,
+        VehicleRepository $vehicleRepository,
+        SerializerInterface $serializer
+    ): JsonResponse
+    {
+        $vehicle = $vehicleRepository->find($id);
+
+        if (!$vehicle) {
+            return new JsonResponse(['error' => 'Vehicle not found'], 404);
+        }
+
+        $json = $serializer->serialize(
+            $vehicle,
+            'json',
+            ['groups' => 'vehicle:read']
+        );
+
+        return new JsonResponse($json, 200, [], true);
+    }
 }

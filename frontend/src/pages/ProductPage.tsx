@@ -46,7 +46,9 @@ export default function ProductPage() {
   if (!vehicle) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <h1 className="font-serif text-[36px] font-normal">Véhicule non trouvé</h1>
+        <h1 className="font-serif text-[36px] font-normal">
+          Véhicule non trouvé
+        </h1>
         <Link to="/" className="text-vroom-accent text-[14px]">
           ← Retour à l'accueil
         </Link>
@@ -61,7 +63,10 @@ export default function ProductPage() {
     .slice(0, 3);
 
   const breadcrumb = [
-    { label: isNew(vehicle) ? "Neufs" : "Occasions", to: isNew(vehicle) ? "/neufs" : "/occasions" },
+    {
+      label: isNew(vehicle) ? "Neufs" : "Occasions",
+      to: isNew(vehicle) ? "/neufs" : "/occasions",
+    },
     { label: vehicle.type, to: "/" },
     { label: vehicle.brand, to: "/" },
     { label: vehicle.model, to: null },
@@ -75,7 +80,10 @@ export default function ProductPage() {
           <span key={i} className="flex items-center gap-2">
             {i > 0 && <span className="text-vroom-ink4">/</span>}
             {crumb.to ? (
-              <Link to={crumb.to} className="hover:text-vroom-ink transition-colors no-underline text-vroom-ink3">
+              <Link
+                to={crumb.to}
+                className="hover:text-vroom-ink transition-colors no-underline text-vroom-ink3"
+              >
                 {crumb.label}
               </Link>
             ) : (
@@ -92,10 +100,7 @@ export default function ProductPage() {
           alt={`${vehicle.brand} ${vehicle.model}`}
           tag={tag}
         />
-        <VehiclePriceCard
-          vehicle={vehicle}
-          onVBot={() => setBotOpen(true)}
-        />
+        <VehiclePriceCard vehicle={vehicle} onVBot={() => setBotOpen(true)} />
       </section>
 
       {/* Specs */}

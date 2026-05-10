@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useShallow } from "zustand/react/shallow";
 import type { Vehicle } from "../types/vehicle";
 import { api } from "../services/api";
 
@@ -36,6 +37,6 @@ export const useVehicleStore = create<State>((set) => ({
 }));
 
 export const useNew = () =>
-  useVehicleStore((s) => s.vehicles.filter((v) => "warranty" in v));
+  useVehicleStore(useShallow((s) => s.vehicles.filter((v) => "warranty" in v)));
 export const useUsed = () =>
-  useVehicleStore((s) => s.vehicles.filter((v) => "mileage" in v));
+  useVehicleStore(useShallow((s) => s.vehicles.filter((v) => "mileage" in v)));

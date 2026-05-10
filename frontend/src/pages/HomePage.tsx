@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useVehicleStore, useNew, useUsed } from "../store/useVehicleStore";
-import VehicleCard from "../components/vehicle/VehicleCard";
-import Hero from "../components/home/Hero";
-import VBotPromo from "../components/home/VBotPromo";
-import FilterBar from "../components/layout/FilterBar";
-import Footer from "../components/layout/Footer";
+import VehicleCard from "../Components/vehicle/VehicleCard";
+import Hero from "../Components/home/Hero";
+import VBotPromo from "../Components/home/VBotPromo";
+import FilterBar from "../Components/layout/FilterBar";
+import Footer from "../Components/layout/Footer";
 
 export default function HomePage() {
   const { fetchAll, isLoading, error, filter } = useVehicleStore();
@@ -16,8 +16,16 @@ export default function HomePage() {
     fetchAll();
   }, [fetchAll]);
 
-  const filterVehicles = <T extends { type?: string; energy?: string; gearbox?: string; nbPlace: number; price: number }>(
-    list: T[]
+  const filterVehicles = <
+    T extends {
+      type?: string;
+      energy?: string;
+      gearbox?: string;
+      nbPlace: number;
+      price: number;
+    },
+  >(
+    list: T[],
   ) =>
     list.filter((v) => {
       if (filter.type && v.type !== filter.type) return false;
@@ -76,7 +84,9 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <p className="text-vroom-ink3 py-8">Aucun véhicule neuf pour ces filtres.</p>
+              <p className="text-vroom-ink3 py-8">
+                Aucun véhicule neuf pour ces filtres.
+              </p>
             )}
           </section>
 
@@ -107,7 +117,9 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <p className="text-vroom-ink3 py-8">Aucune occasion pour ces filtres.</p>
+              <p className="text-vroom-ink3 py-8">
+                Aucune occasion pour ces filtres.
+              </p>
             )}
           </section>
         </>
