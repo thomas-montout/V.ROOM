@@ -28,7 +28,7 @@ const DEMO_MSGS = [
   },
 ];
 
-export default function VBotPromo() {
+export default function VBotPromo({ onOpen }: { onOpen: () => void }) {
   return (
     <section className="bg-[#0a0a0a] text-white px-14 py-20 my-6">
       <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-center">
@@ -47,7 +47,10 @@ export default function VBotPromo() {
             modèles neufs et d'occasion, pour vous proposer les meilleures
             options.
           </p>
-          <button className="inline-flex items-center gap-2.5 mt-8 bg-vroom-accent text-white px-8 py-4 text-[14px] font-medium tracking-wider rounded border-0 cursor-pointer hover:bg-vroom-accent-hover transition-colors">
+          <button
+            onClick={onOpen}
+            className="inline-flex items-center gap-2.5 mt-8 bg-vroom-accent text-white px-8 py-4 text-[14px] font-medium tracking-wider rounded border-0 cursor-pointer hover:bg-vroom-accent-hover transition-colors"
+          >
             Démarrer une conversation
             <svg
               width={16}
