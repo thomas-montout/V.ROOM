@@ -25,13 +25,31 @@ function ProductPage() {
   return (
     <main className="flex flex-col w-full min-h-screen bg-white">
       <section className="w-full flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-8 lg:gap-40 py-8 px-4">
-        {/* Ajustement de la taille de l'image pour la réactivité */}
-        <div className="w-full max-w-md h-64 sm:h-80 lg:w-[500px] lg:h-[375px] relative">
-          <img
-            src={car.image}
-            alt={car.name}
-            className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          />
+        <div className="flex flex-col gap-4">
+          {/* Main Image */}
+          <div className="w-full max-w-md h-64 sm:h-80 lg:w-125 lg:h-93.75 relative">
+            <img
+              src={car.images[0]}
+              alt={car.name}
+              className="main-image absolute top-0 left-0 w-full h-full object-cover z-0"
+            />
+          </div>
+          {/* Gallery */}
+          <div className="flex flex-row gap-2">
+            {car.images.map((img, index) => (
+              <div key={index} className="w-24 h-16 sm:w-32 sm:h-24 relative overflow-hidden">
+                <img
+                  src={img}
+                  alt={`${car.name} gallery ${index}`}
+                  className="absolute top-0 left-0 w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => {
+                    const mainImg = document.querySelector('.main-image') as HTMLImageElement;
+                    if (mainImg) mainImg.src = img;
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
         <div className="flex flex-col justify-between gap-6 lg:gap-10 mt-8 lg:mt-0 text-center lg:text-left">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -53,6 +71,19 @@ function ProductPage() {
           </div>
         </div>
       </section>
+
+      {car.video && (
+        <section className="w-full flex flex-col items-center py-8 px-4 bg-gray-50">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">Vidéo du véhicule</h2>
+          <div className="w-full max-w-4xl aspect-video relative">
+            <video
+              src={car.video}
+              controls
+              className="w-full h-full object-cover rounded-sm shadow-lg"
+            />
+          </div>
+        </section>
+      )}
 
       <section>
         <div className="flex flex-col justify-center items-center my-20">

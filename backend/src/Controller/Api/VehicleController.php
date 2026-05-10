@@ -2,6 +2,8 @@
 
 namespace App\Controller\Api;
 
+use App\Repository\NewVehicleRepository;
+use App\Repository\UsedVehicleRepository;
 use App\Repository\VehicleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,5 +37,35 @@ class VehicleController extends AbstractController
         );
         
         return new JsonResponse($json, 200, [], true); 
+    }
+
+    #[Route('/new', name: 'new', methods: ['GET'])]
+    public function getNewVehicles(
+        NewVehicleRepository $newVehicleRepository,
+        SerializerInterface $serializer
+    ): JsonResponse
+    {
+        $newVehicles = $newVehicleRepository->findAll();
+        $json = $serializer->serialize(
+            $newVehicles,
+            'json',
+            ['groups' => 'vehicle:read']
+        );
+        return new JsonResponse($json, 200, [], true);
+    }
+
+    #[Route('/used', name: 'used', methods: ['GET'])]
+    public function getUsedVehicles(
+        UsedVehicleRepository $usedVehicleRepository,
+        SerializerInterface $serializer
+    ): JsonResponse
+    {
+        $usedVehicles = $usedVehicleRepository->findAll();
+        $json = $serializer->serialize(
+            $usedVehicles,
+            'json',
+            ['groups' => 'vehicle:read']
+        );
+        return new JsonResponse($json, 200, [], true);
     }
 }

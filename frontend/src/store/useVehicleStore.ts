@@ -1,75 +1,41 @@
 import { create } from "zustand";
+import type { Vehicle } from "../types/vehicle";
+import { api } from "../services/api";
 
-interface Vehicle {
-  id: number;
-  brand: string;
-  model: string;
-  price: number;
-  type: string;
-  energy: string;
-  gearbox: string;
-  nbDoors: number;
-  nbPlaces: number;
-  horses: number;
-  image: string;
-  video: string;
+interface Filter {
+  type?: string;
+  energy?: string;
+  gearbox?: string;
+  maxPrice?: number;
+  minPlaces?: number;
 }
 
-interface NewVehicle extends Vehicle {
-  warranty: number;
-}
-
-interface UsedVehicle extends Vehicle {
-  mileage: number;
-}
-
-interface VehicleStore {
-  vehicles: (NewVehicle | UsedVehicle)[];
+interface State {
+  vehicles: Vehicle[];
   isLoading: boolean;
   error: string | null;
-  filter: {
-    type: string;
-    energy: string;
-    gearbox: string;
-    nbDoors: number;
-    nbPlaces: number;
-  };
-  fetchVehicles: () => Promise<void>;
-  fetchNewVehicles: () => Promise<void>;
-  fetchUsedVehicles: () => Promise<void>;
+  filter: Filter;
+  fetchAll: () => Promise<void>;
+  setFilter: (f: Partial<Filter>) => void;
 }
 
-const useVehicleStore = create((set) => ({
-  fetchVehicles: async () => {
+export const useVehicleStore = create<State>((set) => ({
+  vehicles: [],
+  isLoading: false,
+  error: null,
+  filter: {},
+  fetchAll: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await fetch("/api/vehicles");
-      const data = await response.json();
-      set({ vehicles: data, isLoading: false });
+      set({ vehicles: await api.vehicles(), isLoading: false });
     } catch {
-      set({ error: "Failed to fetch vehicles", isLoading: false });
+      set({ error: "Erreur API", isLoading: false });
     }
   },
-  // fetchNewVehicles: async () => {
-  //   set({ isLoading: true, error: null });
-  //   try {
-  //     const response = await fetch("/api/vehicles/new");
-  //     const data = await response.json();
-  //     set({ vehicles: data, isLoading: false });
-  //   } catch {
-  //     set({ error: "Failed to fetch vehicles", isLoading: false });
-  //   }
-  // },
-  // fetchUsedVehicles: async () => {
-  //   set({ isLoading: true, error: null });
-  //   try {
-  //     const response = await fetch("/api/vehicles/used");
-  //     const data = await response.json();
-  //     set({ vehicles: data, isLoading: false });
-  //   } catch {
-  //     set({ error: "Failed to fetch vehicles", isLoading: false });
-  //   }
-  // },
+  setFilter: (f) => set((s) => ({ filter: { ...s.filter, ...f } })),
 }));
 
-export default useVehicleStore;
+export const useNew = () =>
+  useVehicleStore((s) => s.vehicles.filter((v) => "warranty" in v));
+export const useUsed = () =>
+  useVehicleStore((s) => s.vehicles.filter((v) => "mileage" in v));

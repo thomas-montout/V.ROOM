@@ -1,68 +1,119 @@
-import HomeCards from "../Components/HomeCards";
-import models from "../data/cars";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useVehicleStore, useNew, useUsed } from "../store/useVehicleStore";
+import VehicleCard from "../components/vehicle/VehicleCard";
+import Hero from "../components/home/Hero";
+import VBotPromo from "../components/home/VBotPromo";
+import FilterBar from "../components/layout/FilterBar";
+import Footer from "../components/layout/Footer";
 
-function HomePage() {
+export default function HomePage() {
+  const { fetchAll, isLoading, error, filter } = useVehicleStore();
+  const newVehicles = useNew();
+  const usedVehicles = useUsed();
+
+  useEffect(() => {
+    fetchAll();
+  }, [fetchAll]);
+
+  const filterVehicles = <T extends { type?: string; energy?: string; gearbox?: string; nbPlace: number; price: number }>(
+    list: T[]
+  ) =>
+    list.filter((v) => {
+      if (filter.type && v.type !== filter.type) return false;
+      if (filter.energy && v.energy !== filter.energy) return false;
+      if (filter.gearbox && v.gearbox !== filter.gearbox) return false;
+      if (filter.minPlaces && v.nbPlace < filter.minPlaces) return false;
+      if (filter.maxPrice && Number(v.price) > filter.maxPrice) return false;
+      return true;
+    });
+
+  const filteredNew = filterVehicles(newVehicles);
+  const filteredUsed = filterVehicles(usedVehicles);
+  const total = filteredNew.length + filteredUsed.length;
+
   return (
-    <main className="flex flex-col w-full min-h-screen bg-white">
-      <section className="relative w-full h-screen overflow-hidden">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/herovideo2.mp4" type="video/mp4" />
-          Votre navigateur ne supporte pas la balise vidéo.
-        </video>
+    <div className="min-h-screen bg-vroom-bg font-sans text-vroom-ink">
+      <Hero />
+      <FilterBar count={total} />
 
-        <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
-      </section>
+      {isLoading && (
+        <div className="flex items-center justify-center py-24 font-mono text-[12px] tracking-widest uppercase text-vroom-ink4">
+          Chargement…
+        </div>
+      )}
 
-      <section className="flex flex-col items-center justify-center py-16 px-4 text-center z-20">
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-          Bienvenue chez V.Room
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl">
-          Découvrez une nouvelle expérience d'achat de sneakers, où style et
-          durabilité se rencontrent.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          {" "}
-          <a
-            href="/neufs"
-            className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors"
-          >
-            Explorer les Neufs
-          </a>
-          <a
-            href="/occasions"
-            className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors mt-4 sm:mt-0 sm:ml-4" // Ajustement de l'espacement pour mobile
-          >
-            Explorer les Occasions
-          </a>
-          <a
-            href="/bons-plans"
-            className="inline-block bg-[#c40000] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#a30000] transition-colors mt-4 sm:mt-0 sm:ml-4" // Ajustement de l'espacement pour mobile
-          >
-            Explorer les Bons Plans
-          </a>
+      {error && (
+        <div className="flex items-center justify-center py-24 text-vroom-accent">
+          {error}
         </div>
-      </section>
-      <section className="py-16 px-4">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">
-          Nos Meilleures Offres
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <HomeCards car={models[0]} />
-          <HomeCards car={models[1]} />
-          <HomeCards car={models[2]} />
-          <HomeCards car={models[3]} />
-          <HomeCards car={models[4]} />
-          <HomeCards car={models[5]} />
-        </div>
-      </section>
-    </main>
+      )}
+
+      {!isLoading && !error && (
+        <>
+          {/* Section Neufs */}
+          <section className="px-14 pt-[72px] pb-12">
+            <div className="flex justify-between items-end mb-9">
+              <div>
+                <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
+                  01 — Nouveautés
+                </div>
+                <h2 className="font-serif text-[42px] font-normal m-0 tracking-[-0.005em]">
+                  Les neufs du moment.
+                </h2>
+              </div>
+              <Link
+                to="/neufs"
+                className="text-[14px] text-vroom-ink no-underline border-b border-b-vroom-accent pb-1"
+              >
+                Tous les neufs ({newVehicles.length}) →
+              </Link>
+            </div>
+            {filteredNew.length > 0 ? (
+              <div className="grid grid-cols-3 gap-6">
+                {filteredNew.slice(0, 3).map((v) => (
+                  <VehicleCard key={v.id} vehicle={v} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-vroom-ink3 py-8">Aucun véhicule neuf pour ces filtres.</p>
+            )}
+          </section>
+
+          <VBotPromo />
+
+          {/* Section Occasions */}
+          <section className="px-14 py-[72px]">
+            <div className="flex justify-between items-end mb-9">
+              <div>
+                <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
+                  02 — Sélection
+                </div>
+                <h2 className="font-serif text-[42px] font-normal m-0 tracking-[-0.005em]">
+                  Occasions & bons plans.
+                </h2>
+              </div>
+              <Link
+                to="/occasions"
+                className="text-[14px] text-vroom-ink no-underline border-b border-b-vroom-accent pb-1"
+              >
+                Tout voir ({usedVehicles.length}) →
+              </Link>
+            </div>
+            {filteredUsed.length > 0 ? (
+              <div className="grid grid-cols-3 gap-6">
+                {filteredUsed.slice(0, 3).map((v) => (
+                  <VehicleCard key={v.id} vehicle={v} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-vroom-ink3 py-8">Aucune occasion pour ces filtres.</p>
+            )}
+          </section>
+        </>
+      )}
+
+      <Footer />
+    </div>
   );
 }
-export default HomePage;
