@@ -72,8 +72,8 @@ export default function VBotPromo({ onOpen }: { onOpen: () => void }) {
               key={i}
               className={`max-w-[85%] px-4 py-3 rounded-[14px] text-[14px] leading-relaxed ${
                 m.role === "user"
-                  ? "self-end bg-white text-vroom-ink rounded-tr-[4px]"
-                  : "self-start bg-vroom-accent text-white rounded-tl-[4px]"
+                  ? "self-end bg-white text-vroom-ink rounded-tr-sm"
+                  : "self-start bg-vroom-accent text-white rounded-tl-sm"
               }`}
             >
               {m.text}

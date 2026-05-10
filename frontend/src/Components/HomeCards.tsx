@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import type models from "../data/cars";
 
 type Props = {
-  car: (typeof models)[0];
+  car: {
+    id: string;
+    name: string;
+    images: string[];
+  };
 };
 
 function HomeCard({ car }: Props) {
