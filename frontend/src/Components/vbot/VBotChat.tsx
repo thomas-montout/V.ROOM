@@ -8,7 +8,12 @@ interface Props {
   isLoading?: boolean;
 }
 
-export default function VBotChat({ messages, onClose, onSend, isLoading }: Props) {
+export default function VBotChat({
+  messages,
+  onClose,
+  onSend,
+  isLoading,
+}: Props) {
   const [input, setInput] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -25,11 +30,11 @@ export default function VBotChat({ messages, onClose, onSend, isLoading }: Props
   }
 
   return (
-    <div className="fixed right-8 bottom-8 z-41 w-[420px] h-[580px] bg-white border border-vroom-line rounded-lg shadow-[0_16px_48px_rgba(0,0,0,0.18),0_2px_8px_rgba(0,0,0,0.06)] flex flex-col overflow-hidden">
+    <div className="fixed right-8 bottom-8 z-41 w-105 h-145 bg-white border border-vroom-line rounded-lg shadow-[0_16px_48px_rgba(0,0,0,0.18),0_2px_8px_rgba(0,0,0,0.06)] flex flex-col overflow-hidden">
       {/* Header */}
       <header className="flex justify-between items-center px-5 py-4 bg-[#0a0a0a] text-white shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-vroom-accent flex items-center justify-center font-serif font-bold text-[11px] tracking-[0.05em]">
+          <div className="w-8 h-8 rounded-full bg-vroom-accent flex items-center justify-center font-serif font-bold text-[11px] tracking-wider">
             V.
           </div>
           <div>
@@ -56,15 +61,15 @@ export default function VBotChat({ messages, onClose, onSend, isLoading }: Props
             key={i}
             className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed rounded-[14px] ${
               m.role === "user"
-                ? "self-end bg-[#0a0a0a] text-white rounded-tr-[4px]"
-                : "self-start bg-white text-vroom-ink border border-vroom-line rounded-tl-[4px]"
+                ? "self-end bg-[#0a0a0a] text-white rounded-tr-sm"
+                : "self-start bg-white text-vroom-ink border border-vroom-line rounded-tl-sm"
             }`}
           >
             {m.text}
           </div>
         ))}
         {isLoading && (
-          <div className="self-start bg-white border border-vroom-line rounded-[14px] rounded-tl-[4px] px-4 py-3 text-[14px] text-vroom-ink3">
+          <div className="self-start bg-white border border-vroom-line rounded-[14px] rounded-tl-sm px-4 py-3 text-[14px] text-vroom-ink3">
             …
           </div>
         )}
