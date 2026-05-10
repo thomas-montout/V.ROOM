@@ -15,7 +15,7 @@ export default function VehicleGallery({ images, alt, tag }: Props) {
       <div className="relative aspect-[16/10] bg-vroom-surface overflow-hidden">
         {mainSrc && (
           <img
-            src={mainSrc}
+            src={`/cars/${mainSrc}`}
             alt={alt}
             className="w-full h-full object-cover"
           />
@@ -40,7 +40,7 @@ export default function VehicleGallery({ images, alt, tag }: Props) {
               }`}
             >
               <img
-                src={src}
+                src={`/cars/${src}`}
                 alt={`${alt} ${i + 1}`}
                 className="w-full h-full object-cover"
               />
