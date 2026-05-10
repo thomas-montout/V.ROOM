@@ -6,11 +6,16 @@ import Hero from "../Components/home/Hero";
 import VBotPromo from "../Components/home/VBotPromo";
 import FilterBar from "../Components/layout/FilterBar";
 import Footer from "../Components/layout/Footer";
+import VBotFAB from "../Components/vbot/VBotFAB";
+import VBotChat from "../Components/vbot/VBotChat";
+import { useVBot } from "../Components/vbot/useVBot";
 
 export default function HomePage() {
   const { fetchAll, isLoading, error, filter } = useVehicleStore();
   const newVehicles = useNew();
   const usedVehicles = useUsed();
+  const [botOpen, setBotOpen] = useState(false);
+  const { messages, send, isLoading: botLoading } = useVBot();
 
   useEffect(() => {
     fetchAll();
@@ -90,7 +95,7 @@ export default function HomePage() {
             )}
           </section>
 
-          <VBotPromo />
+          <VBotPromo onOpen={() => setBotOpen(true)} />
 
           {/* Section Occasions */}
           <section className="px-14 py-18">
@@ -126,6 +131,17 @@ export default function HomePage() {
       )}
 
       <Footer />
+
+      {botOpen ? (
+        <VBotChat
+          messages={messages}
+          onClose={() => setBotOpen(false)}
+          onSend={send}
+          isLoading={botLoading}
+        />
+      ) : (
+        <VBotFAB onClick={() => setBotOpen(true)} />
+      )}
     </div>
   );
 }
