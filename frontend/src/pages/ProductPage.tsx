@@ -108,11 +108,11 @@ export default function ProductPage() {
 
       {/* Vidéo */}
       {vehicle.video && (
-        <section className="px-14 py-14 bg-white border-b border-vroom-line">
+        <section className="px-14 py-14 bg-[#0a0a0a]">
           <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
             Vidéo
           </div>
-          <h2 className="font-serif text-[32px] font-normal mb-8 tracking-[-0.005em]">
+          <h2 className="font-serif text-[32px] font-normal mb-8 tracking-[-0.005em] text-white">
             En mouvement.
           </h2>
           <div className="aspect-video w-full max-w-4xl">
@@ -127,7 +127,7 @@ export default function ProductPage() {
 
       {/* Modèles similaires */}
       {similar.length > 0 && (
-        <section className="px-14 py-[72px]">
+        <section className="px-14 py-18">
           <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
             Aussi pour vous
           </div>

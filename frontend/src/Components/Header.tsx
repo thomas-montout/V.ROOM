@@ -18,19 +18,19 @@ function Header() {
       <nav className="hidden md:flex items-center gap-8">
         <Link
           to="/neufs"
-          className="text-[14px] font-light text-vroom-ink hover:text-vroom-accent transition-colors no-underline"
+          className="text-[16px] font-light text-vroom-ink hover:text-vroom-accent transition-colors no-underline"
         >
           Neufs
         </Link>
         <Link
           to="/occasions"
-          className="text-[14px] font-light text-vroom-ink hover:text-vroom-accent transition-colors no-underline"
+          className="text-[16px] font-light text-vroom-ink hover:text-vroom-accent transition-colors no-underline"
         >
           Occasions
         </Link>
         <Link
           to="/bons-plans"
-          className="text-[14px] font-light text-vroom-ink hover:text-vroom-accent transition-colors no-underline"
+          className="text-[16px] font-light text-vroom-ink hover:text-vroom-accent transition-colors no-underline"
         >
           Bons plans
         </Link>

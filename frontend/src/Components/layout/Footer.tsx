@@ -11,11 +11,7 @@ const COLS = [
   },
   {
     title: "Services",
-    links: [
-      { label: "V.BOT", to: "/" },
-      { label: "Financement", to: "/" },
-      { label: "Livraison", to: "/" },
-    ],
+    links: [{ label: "V.BOT", to: "/" }],
   },
   {
     title: "V.ROOM",
@@ -39,7 +35,7 @@ export default function Footer() {
           </Link>
           <p className="text-[13px] mt-4 leading-relaxed max-w-xs">
             La nouvelle façon de choisir, comparer et acheter votre prochaine
-            voiture. Sélection humaine, conseil augmenté.
+            voiture.
           </p>
         </div>
 
@@ -50,7 +46,10 @@ export default function Footer() {
             </div>
             {links.map(({ label, to }) => (
               <div key={label} className="text-[13px] py-1">
-                <Link to={to} className="text-[#888888] no-underline hover:text-white transition-colors">
+                <Link
+                  to={to}
+                  className="text-[#888888] no-underline hover:text-white transition-colors"
+                >
                   {label}
                 </Link>
               </div>

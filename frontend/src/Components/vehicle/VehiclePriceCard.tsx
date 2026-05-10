@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function VehiclePriceCard({ vehicle, onVBot }: Props) {
-  const monthly = Math.round(Number(vehicle.price) / 60);
+  const monthly = Math.round(Number(vehicle.price) / 60); // Calcul pour 60 mois
 
   const pills = [
     vehicle.type,
@@ -15,7 +15,7 @@ export default function VehiclePriceCard({ vehicle, onVBot }: Props) {
     `${vehicle.horses} ch`,
     `${vehicle.nbPlace} places`,
     vehicle.gearbox,
-    ...(isUsed(vehicle) ? [`${Math.round(vehicle.mileage / 1000)} k km`] : []),
+    ...(isUsed(vehicle) ? [`${Math.round(vehicle.mileage / 1000)} k km`] : []), // Calcul du kilométrage en milliers de km pour les occasions
   ];
 
   return (
@@ -54,7 +54,7 @@ export default function VehiclePriceCard({ vehicle, onVBot }: Props) {
         </div>
       </div>
 
-      <button className="w-full bg-vroom-accent text-white border-0 py-4.5 text-[15px] font-medium tracking-[0.05em] cursor-pointer rounded mb-2.5 hover:bg-vroom-accent-hover transition-colors">
+      <button className="w-full bg-vroom-accent text-white border-0 py-4.5 text-[15px] font-medium tracking-wider cursor-pointer rounded mb-2.5 hover:bg-vroom-accent-hover transition-colors">
         Acheter ce véhicule
       </button>
       <button className="w-full bg-white text-vroom-ink border border-vroom-line py-4 text-[14px] font-light cursor-pointer rounded mb-6 flex items-center justify-center gap-2.5 hover:bg-vroom-surface transition-colors">
@@ -74,7 +74,9 @@ export default function VehiclePriceCard({ vehicle, onVBot }: Props) {
       <div className="grid grid-cols-2 gap-3">
         <div className="p-3.5 bg-vroom-surface rounded">
           <div className="font-medium text-[13px]">Livraison 48h</div>
-          <div className="text-[12px] text-vroom-ink3 mt-1">Partout en France</div>
+          <div className="text-[12px] text-vroom-ink3 mt-1">
+            Partout en France
+          </div>
         </div>
         <div className="p-3.5 bg-vroom-surface rounded">
           {isNew(vehicle) ? (
