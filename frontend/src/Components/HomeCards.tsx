@@ -9,7 +9,7 @@ function HomeCard({ car }: Props) {
   return (
     <div className="relative overflow-hidden rounded-sm shadow-md border border-gray-200 h-80">
       <img
-        src={car.image}
+        src={car.images[0]}
         alt={car.name}
         className="absolute inset-0 w-full h-full object-cover"
       />

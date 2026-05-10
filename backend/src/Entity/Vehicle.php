@@ -52,11 +52,11 @@ abstract class Vehicle
 
     #[ORM\Column]
     #[Groups(['vehicle:read'])]
-    private ?string $price = null; // Recommandation: Utiliser 'string' pour 'decimal' ou 'int' pour les centimes
+    private ?string $price = null; 
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: 'json', nullable: true)]
     #[Groups(['vehicle:read'])]
-    private ?string $image = null;
+    private array $images = [];
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['vehicle:read'])]
@@ -175,14 +175,14 @@ abstract class Vehicle
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImages(): array
     {
-        return $this->image;
+        return $this->images;
     }
 
-    public function setImage(?string $image): static
+    public function setImages(?array $images): static
     {
-        $this->image = $image;
+        $this->images = $images ?? [];
 
         return $this;
     }

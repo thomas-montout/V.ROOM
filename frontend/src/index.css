@@ -1,3 +1,26 @@
-/* Ce fichier CSS est utilisé pour inclure les styles de Tailwind CSS dans l'application.*/
-
 @import "tailwindcss";
+
+@theme {
+  --color-vroom-ink: #0A0A0A;
+  --color-vroom-ink2: #3a3a3a;
+  --color-vroom-ink3: #6b6b6b;
+  --color-vroom-ink4: #a0a0a0;
+  --color-vroom-accent: #C40000;
+  --color-vroom-accent-hover: #A30000;
+  --color-vroom-surface: #F5F5F5;
+  --color-vroom-line: #E6E6E6;
+  --color-vroom-line2: #f1f1f1;
+  --color-vroom-bg: #FAFAF9;
+
+  --font-sans: Roboto, system-ui, sans-serif;
+  --font-serif: "Roboto Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-vroom-ink);
+  background-color: var(--color-vroom-bg);
+  font-weight: 300;
+  line-height: 1.55;
+}

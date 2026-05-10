@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
         $bmwNew->setNbDoors(5);
         $bmwNew->setNbPlace(5);
         $bmwNew->setHorses(625); // Puissance réelle du X5 M Competition
-        $bmwNew->setImage('BMWX5xDrive50e.webp '); // Image du véhicule
+        $bmwNew->setImages(['BMWX5xDrive50e.webp', 'BMWX5xDrive50e1.webp', 'BMWX5xDrive50e2.webp']); // Images du véhicule
         $bmwNew->setVideo('bmwx5xdrive50e.mp4'); // Vidéo du véhicule
 
         // Spécifique véhicule NEUF
@@ -54,7 +54,7 @@ class AppFixtures extends Fixture
         $bmwUsed1->setHorses(190);
         $bmwUsed1->setGeneralState("Bon");
         $bmwUsed1->setNbPreviousOwner(2);
-        $bmwUsed1->setImage('BMW320dxDrive.webp'); // Image du véhicule
+        $bmwUsed1->setImages(['BMW320dxDrive.webp', 'BMW320dxDrive1.webp', 'BMW320dxDrive2.webp']); // Images du véhicule
         $bmwUsed1->setVideo('BMW320dxDrive.mp4'); // Vidéo du véhicule
 
         // Spécifique véhicule D'OCCASION
@@ -80,7 +80,7 @@ class AppFixtures extends Fixture
         $bmwUsed2->setHorses(450);
         $bmwUsed2->setGeneralState("Excellent");
         $bmwUsed2->setNbPreviousOwner(1);
-        $bmwUsed2->setImage('BMWM2CS.webp'); // Image du véhicule
+        $bmwUsed2->setImages(['BMWM2CS.webp', 'BMWM2CS1.webp', 'BMWM2CS2.webp']); // Images du véhicule
         $bmwUsed2->setVideo('BMWM2CS.mp4'); // Vidéo du véhicule
         $bmwUsed2->setMileage(15000); // 15 000 km
         
@@ -102,7 +102,7 @@ class AppFixtures extends Fixture
         $bmwNew2->setNbPlace(5);
         $bmwNew2->setHorses(340);
         $bmwNew2->setWarranty(24);
-        $bmwNew2->setImage('BMWi4xDrive40.webp'); // Image du véhicule
+        $bmwNew2->setImages(['BMWi4xDrive40.webp', 'BMWi4xDrive401.webp', 'BMWi4xDrive402.webp']); // Images du véhicule
         $bmwNew2->setVideo('BMWi4xDrive40.mp4'); // Vidéo du véhicule
         $manager->persist($bmwNew2);
 
@@ -122,7 +122,7 @@ class AppFixtures extends Fixture
         $bmwNew3->setNbPlace(5);
         $bmwNew3->setHorses(510);
         $bmwNew3->setWarranty(36);
-        $bmwNew3->setImage('BMWM3CSTouring.webp'); // Image du véhicule
+        $bmwNew3->setImages(['BMWM3CSTouring.webp', 'BMWM3CSTouring1.webp', 'BMWM3CSTouring2.webp']); // Images du véhicule
         $bmwNew3->setVideo('BMWM3CSTouring.mp4'); // Vidéo du véhicule
 
         $manager->persist($bmwNew3);
@@ -143,7 +143,7 @@ class AppFixtures extends Fixture
         $bmwUsed3->setGeneralState("Très bon");
         $bmwUsed3->setNbPreviousOwner(1);
         $bmwUsed3->setMileage(42000);
-        $bmwUsed3->setImage('BMW116.webp'); // Image du véhicule
+        $bmwUsed3->setImages(['BMW116.webp', 'BMW1161.webp', 'BMW1162.webp']); // Images du véhicule
         $bmwUsed3->setVideo('BMW116.mp4'); // Vidéo du véhicule
         $manager->persist($bmwUsed3);
 
