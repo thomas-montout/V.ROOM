@@ -198,4 +198,10 @@ abstract class Vehicle
 
         return $this;
     }
+
+    #[Groups(['vehicle:read'])]
+    public function getDtype(): string
+    {
+        return $this instanceof NewVehicle ? 'new' : 'used';
+    }
 }
