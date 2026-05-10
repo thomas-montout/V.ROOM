@@ -1,6 +1,6 @@
 import type { Vehicle } from "../types/vehicle";
 
-const BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? "/api";
+const BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "/api";
 
 export const api = {
   vehicles: () =>
