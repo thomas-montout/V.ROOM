@@ -60,7 +60,7 @@ export default function HomePage() {
       {!isLoading && !error && (
         <>
           {/* Section Neufs */}
-          <section className="px-14 pt-[72px] pb-12">
+          <section className="px-14 pt-18 pb-12">
             <div className="flex justify-between items-end mb-9">
               <div>
                 <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
@@ -93,7 +93,7 @@ export default function HomePage() {
           <VBotPromo />
 
           {/* Section Occasions */}
-          <section className="px-14 py-[72px]">
+          <section className="px-14 py-18">
             <div className="flex justify-between items-end mb-9">
               <div>
                 <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">

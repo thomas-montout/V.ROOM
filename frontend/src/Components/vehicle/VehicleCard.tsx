@@ -20,7 +20,7 @@ export default function VehicleCard({ vehicle, dark = false }: Props) {
     <article
       className={`flex flex-col ${dark ? "bg-[#0a0a0a] text-white border-[#0a0a0a]" : "bg-white text-vroom-ink border-vroom-line"} border transition-all duration-200`}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-vroom-surface">
+      <div className="relative aspect-16/10 overflow-hidden bg-vroom-surface">
         {mainImg ? (
           <img
             src={`/cars/${mainImg}`}
