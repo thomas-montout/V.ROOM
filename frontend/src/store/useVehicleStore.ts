@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface Vehicle {
+export interface Vehicle {
   id: number;
   brand: string;
   model: string;
@@ -9,17 +9,17 @@ interface Vehicle {
   energy: string;
   gearbox: string;
   nbDoors: number;
-  nbPlaces: number;
+  nbPlace: number;
   horses: number;
-  image: string;
-  video: string;
+  images: string[] | null;
+  video: string | null;
 }
 
-interface NewVehicle extends Vehicle {
+export interface NewVehicle extends Vehicle {
   warranty: number;
 }
 
-interface UsedVehicle extends Vehicle {
+export interface UsedVehicle extends Vehicle {
   mileage: number;
 }
 
@@ -32,14 +32,24 @@ interface VehicleStore {
     energy: string;
     gearbox: string;
     nbDoors: number;
-    nbPlaces: number;
+    nbPlace: number;
   };
   fetchVehicles: () => Promise<void>;
   fetchNewVehicles: () => Promise<void>;
   fetchUsedVehicles: () => Promise<void>;
 }
 
-const useVehicleStore = create((set) => ({
+const useVehicleStore = create<VehicleStore>((set) => ({
+  vehicles: [],
+  isLoading: false,
+  error: null,
+  filter: {
+    type: "",
+    energy: "",
+    gearbox: "",
+    nbDoors: 0,
+    nbPlace: 0,
+  },
   fetchVehicles: async () => {
     set({ isLoading: true, error: null });
     try {
@@ -50,26 +60,26 @@ const useVehicleStore = create((set) => ({
       set({ error: "Failed to fetch vehicles", isLoading: false });
     }
   },
-  // fetchNewVehicles: async () => {
-  //   set({ isLoading: true, error: null });
-  //   try {
-  //     const response = await fetch("/api/vehicles/new");
-  //     const data = await response.json();
-  //     set({ vehicles: data, isLoading: false });
-  //   } catch {
-  //     set({ error: "Failed to fetch vehicles", isLoading: false });
-  //   }
-  // },
-  // fetchUsedVehicles: async () => {
-  //   set({ isLoading: true, error: null });
-  //   try {
-  //     const response = await fetch("/api/vehicles/used");
-  //     const data = await response.json();
-  //     set({ vehicles: data, isLoading: false });
-  //   } catch {
-  //     set({ error: "Failed to fetch vehicles", isLoading: false });
-  //   }
-  // },
+  fetchNewVehicles: async () => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await fetch("/api/vehicles/new");
+      const data = await response.json();
+      set({ vehicles: data, isLoading: false });
+    } catch {
+      set({ error: "Failed to fetch vehicles", isLoading: false });
+    }
+  },
+  fetchUsedVehicles: async () => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await fetch("/api/vehicles/used");
+      const data = await response.json();
+      set({ vehicles: data, isLoading: false });
+    } catch {
+      set({ error: "Failed to fetch vehicles", isLoading: false });
+    }
+  },
 }));
 
 export default useVehicleStore;

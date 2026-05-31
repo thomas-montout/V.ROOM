@@ -54,9 +54,10 @@ abstract class Vehicle
     #[Groups(['vehicle:read'])]
     private ?float $price = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    /** @var string[]|null */
+    #[ORM\Column(type: 'json', nullable: true)]
     #[Groups(['vehicle:read'])]
-    private ?string $image = null;
+    private ?array $images = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['vehicle:read'])]
@@ -175,14 +176,14 @@ abstract class Vehicle
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImages(): ?array
     {
-        return $this->image;
+        return $this->images;
     }
 
-    public function setImage(?string $image): static
+    public function setImages(?array $images): static
     {
-        $this->image = $image;
+        $this->images = $images;
 
         return $this;
     }

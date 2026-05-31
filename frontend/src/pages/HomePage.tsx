@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 import HomeCards from "../Components/HomeCards";
-import models from "../data/cars";
+import useVehicleStore from "../store/useVehicleStore";
 
 function HomePage() {
+  const { vehicles, isLoading, error, fetchVehicles } = useVehicleStore();
+
+  useEffect(() => {
+    fetchVehicles();
+  }, [fetchVehicles]);
+
   return (
     <main className="flex flex-col w-full min-h-screen bg-white">
       <section className="relative w-full h-screen overflow-hidden">
@@ -53,13 +60,15 @@ function HomePage() {
         <h2 className="text-3xl font-bold text-gray-900 mb-8">
           Nos Meilleures Offres
         </h2>
+        {isLoading && <p className="text-gray-600">Chargement…</p>}
+        {error && <p className="text-red-600">{error}</p>}
+        {!isLoading && !error && vehicles.length === 0 && (
+          <p className="text-gray-600">Aucun véhicule disponible.</p>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <HomeCards car={models[0]} />
-          <HomeCards car={models[1]} />
-          <HomeCards car={models[2]} />
-          <HomeCards car={models[3]} />
-          <HomeCards car={models[4]} />
-          <HomeCards car={models[5]} />
+          {vehicles.slice(0, 6).map((v) => (
+            <HomeCards key={v.id} car={v} />
+          ))}
         </div>
       </section>
     </main>

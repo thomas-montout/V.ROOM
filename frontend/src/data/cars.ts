@@ -1,109 +1,117 @@
-// type CarModel = {
-//   id: number;
-//   brand: string;
-//   name: string;
-//   price: number;
-//   model: string;
-//   type: string | null;
-//   energy: string | null;
-//   gearbox: string | null;
-//   nbDoors: number | null;
-//   nbSeats: number | null;
-//   nbPlace: number | null;
-//   horses: number | null;
-//   image: string;
-//   video: string | null;
-// };
+export type CarModel = {
+  id: number;
+  brand: string;
+  name: string;
+  price: number;
+  model: string;
+  type: string | null;
+  energy: string | null;
+  gearbox: string | null;
+  nbDoors: number | null;
+  nbSeats: number | null;
+  nbPlaces: number | null;
+  horses: number | null;
+  image: string;
+  video: string | null;
+};
 
-// const models: CarModel[] = [
-//   {
-//     id: 1,
-//     brand: "BMW",
-//     name: "BMW M3",
-//     price: 35000,
-//     model: "M3",
-//     type: "berline",
-//     energy: "essence",
-//     horses: 340,
-//     nbPlace: 5,
-//     nbSeats: 5,
-//     nbDoors: 4,
-//     gearbox: "manuelle",
-//     image: "/cars/model1.webp",
-//   },
-//   energy: string | null;
-//   gearbox: string | null;
-//   nbDoors: number | null;
-//   nbSeats: number | null;
-//   nbPlace: number | null;
-//   horses: number | null;
-//   image: string;
-//   video: string | null;
-//   },
+const models: CarModel[] = [
+  {
+    id: 1,
+    brand: "BMW",
+    name: "BMW M3",
+    price: 35000,
+    model: "M3",
+    type: "berline",
+    energy: "essence",
+    gearbox: "manuelle",
+    nbDoors: 4,
+    nbSeats: 5,
+    nbPlaces: 5,
+    horses: 340,
+    image: "/cars/model1.webp",
+    video: null,
+  },
+  {
+    id: 2,
+    brand: "BMW",
+    name: "BMW X5",
+    price: 52000,
+    model: "X5",
+    type: "suv",
+    energy: "diesel",
+    gearbox: "automatique",
+    nbDoors: 5,
+    nbSeats: 5,
+    nbPlaces: 5,
+    horses: 265,
+    image: "/cars/model2.webp",
+    video: null,
+  },
+  {
+    id: 3,
+    brand: "BMW",
+    name: "BMW i8",
+    price: 78000,
+    model: "i8",
+    type: "coupé",
+    energy: "hybride",
+    gearbox: "automatique",
+    nbDoors: 2,
+    nbSeats: 4,
+    nbPlaces: 4,
+    horses: 374,
+    image: "/cars/model3.webp",
+    video: null,
+  },
+  {
+    id: 4,
+    brand: "BMW",
+    name: "BMW Série 1",
+    price: 27000,
+    model: "Série 1",
+    type: "citadine",
+    energy: "essence",
+    gearbox: "manuelle",
+    nbDoors: 5,
+    nbSeats: 5,
+    nbPlaces: 5,
+    horses: 140,
+    image: "/cars/model4.webp",
+    video: null,
+  },
+  {
+    id: 5,
+    brand: "BMW",
+    name: "BMW X3 Hybride",
+    price: 48000,
+    model: "X3",
+    type: "suv",
+    energy: "hybride",
+    gearbox: "automatique",
+    nbDoors: 5,
+    nbSeats: 5,
+    nbPlaces: 5,
+    horses: 292,
+    image: "/cars/model5.webp",
+    video: null,
+  },
+  {
+    id: 6,
+    brand: "BMW",
+    name: "BMW i3",
+    price: 32000,
+    model: "i3",
+    type: "citadine",
+    energy: "electrique",
+    gearbox: "automatique",
+    nbDoors: 5,
+    nbSeats: 4,
+    nbPlaces: 4,
+    horses: 170,
+    image: "/cars/model6.webp",
+    video: null,
+  },
+];
 
-//   {
-//     id: 2,
-//     brand: "BMW",
-//     name: "BMW X5",
-//     price: 52000,
-//     model: "X5",
-//     type: "suv",
-//     energy: "diesel",
-//     horses: 265,
-//     nbPlace: 5,
-//     nbSeats: 5,
-//     nbDoors: 5,
-//     gearbox: "automatique",
-//     image: "/cars/model2.webp",
-//   },
-//   {
-//     id: 3,
-//     name: "BMW i8",
-//     price: 78000,
-//     type: "coupé",
-//     energie: "hybride",
-//     puissance: 374,
-//     places: 4,
-//     portes: 2,
-//     boiteDeVitesses: "automatique",
-//     image: "/cars/model3.webp",
-//   },
-//   {
-//     id: 4,
-//     name: "BMW Série 1",
-//     price: 27000,
-//     type: "citadine",
-//     energie: "essence",
-//     puissance: 140,
-//     places: 5,
-//     portes: 5,
-//     boiteDeVitesses: "manuelle",
-//     image: "/cars/model4.webp",
-//   },
-//   {
-//     id: 5,
-//     name: "BMW X3 Hybride",
-//     price: 48000,
-//     type: "suv",
-//     energie: "hybride",
-//     puissance: 292,
-//     places: 5,
-//     portes: 5,
-//     boiteDeVitesses: "automatique",
-//     image: "/cars/model5.webp",
-//   },
-//   {
-//     id: 6,
-//     name: "BMW i3",
-//     price: 32000,
-//     type: "citadine",
-//     energie: "electrique",
-//     puissance: 170,
-//     places: 4,
-//     portes: 5,
-//     boiteDeVitesses: "automatique",
-//     image: "/cars/model6.webp",
-//   },
-// ];
-
-// export default models;
+export default models;

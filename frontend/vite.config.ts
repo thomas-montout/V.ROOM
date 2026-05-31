@@ -7,4 +7,13 @@ export default defineConfig({
     react(),
     tailwindcss(), // <-- Ce plugin est obligatoire pour Tailwind v4
   ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://localhost:8000",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });
