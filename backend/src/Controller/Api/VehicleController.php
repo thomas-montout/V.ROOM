@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Controller\Api;
+
+use App\Repository\NewVehicleRepository;
+use App\Repository\UsedVehicleRepository;
+use App\Repository\VehicleRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+
+#[Route('/api/vehicles', name: 'api_vehicles_')]
+class VehicleController extends AbstractController
+{
+    #[Route('', name: 'index', methods: ['GET'])]
+    public function index(
+        VehicleRepository $vehicleRepository, 
+        Request $request,
+        SerializerInterface $serializer
+    ): JsonResponse
+    {
+        $brand = $request->query->get('brand');
+
+        if ($brand) {
+            $vehicles = $vehicleRepository->findBy(['brand' => $brand]);
+        } else {
+            $vehicles = $vehicleRepository->findAll();
+        }
+        
+        // Sérialise explicitement avec le groupe
+        $json = $serializer->serialize(
+            $vehicles, 
+            'json',
+            ['groups' => 'vehicle:read']
+        );
+        
+        return new JsonResponse($json, 200, [], true); 
+    }
+
+    #[Route('/new', name: 'new', methods: ['GET'])]
+    public function getNewVehicles(
+        NewVehicleRepository $newVehicleRepository,
+        SerializerInterface $serializer
+    ): JsonResponse
+    {
+        $newVehicles = $newVehicleRepository->findAll();
+        $json = $serializer->serialize(
+            $newVehicles,
+            'json',
+            ['groups' => 'vehicle:read']
+        );
+        return new JsonResponse($json, 200, [], true);
+    }
+
+    #[Route('/used', name: 'used', methods: ['GET'])]
+    public function getUsedVehicles(
+        UsedVehicleRepository $usedVehicleRepository,
+        SerializerInterface $serializer
+    ): JsonResponse
+    {
+        $usedVehicles = $usedVehicleRepository->findAll();
+        $json = $serializer->serialize(
+            $usedVehicles,
+            'json',
+            ['groups' => 'vehicle:read']
+        );
+        return new JsonResponse($json, 200, [], true);
+    }
+
+    #[Route('/{id}', name: 'show', methods: ['GET'], requirements: ['id' => '\d+'])]
+    public function show(
+        int $id,
+        VehicleRepository $vehicleRepository,
+        SerializerInterface $serializer
+    ): JsonResponse
+    {
+        $vehicle = $vehicleRepository->find($id);
+
+        if (!$vehicle) {
+            return new JsonResponse(['error' => 'Vehicle not found'], 404);
+        }
+
+        $json = $serializer->serialize(
+            $vehicle,
+            'json',
+            ['groups' => 'vehicle:read']
+        );
+
+        return new JsonResponse($json, 200, [], true);
+    }
+}

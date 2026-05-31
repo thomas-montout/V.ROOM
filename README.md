@@ -32,7 +32,7 @@ Le projet utilise une architecture Client-Serveur strictement séparée au sein 
 - Langage : PHP 8.2+
 - Base de données : PostgreSQL et ORM Doctrine
 - Sécurité : LexikJWTAuthenticationBundle
-- IA : API Anthropic (Claude) pour le traitement du langage naturel
+- IA : API Gemini pour le traitement du langage naturel
 
 ---
 
@@ -51,7 +51,7 @@ vroom/
 - Node.js et npm
 - PHP 8.2+ et Composer
 - Serveur PostgreSQL actif
-- Clé d'API Anthropic (Claude) valide
+- Clé d'API Gemini valide
 
 ### 1. Configuration du Backend (Symfony)
 
@@ -64,7 +64,7 @@ composer install
 Configuration de l'environnement :
 Créer un fichier .env.local dans le dossier backend et configurer les variables suivantes :
 DATABASE_URL="postgresql://utilisateur:mot_de_passe@127.0.0.1:5432/vroom_db?serverVersion=16&charset=utf8"
-ANTHROPIC_API_KEY="votre_cle_api_claude"
+GEMINI_API_KEY="votre_cle_api_gemini"
 
 Initialisation de la base de données :
 php bin/console doctrine:database:create
