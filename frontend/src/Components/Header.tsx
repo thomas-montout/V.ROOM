@@ -4,7 +4,7 @@ function Header() {
   // TODO: Implémenter un menu hamburger pour la navigation et la recherche sur mobile
   return (
     // "sticky top-0 z-50" permet au menu de rester accroché en haut quand on défile
-    <header className="top-0 flex items-center justify-between px-14 py-5 bg-white border-b border-vroom-line sticky z-50">
+    <header className="top-0 flex items-center justify-between px-14 py-3 bg-white border-b border-vroom-line sticky z-50">
       <Link to="/" className="flex items-center cursor-pointer no-underline">
         <span className="font-serif font-bold text-[22px] tracking-[0.13em] text-vroom-ink">
           V.
