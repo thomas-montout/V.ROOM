@@ -24,6 +24,8 @@ ENV APP_ENV=prod \
     APP_DEBUG=0 \
     COMPOSER_ALLOW_SUPERUSER=1 \
     APP_SECRET=build_dummy_secret \
+    DEFAULT_URI=http://localhost \
+    CORS_ALLOW_ORIGIN="^https?://localhost$" \
     DATABASE_URL="postgresql://build:build@127.0.0.1:5432/build?serverVersion=16&charset=utf8"
 
 # 1) Dépendances PHP d'abord (meilleur cache de couches Docker)
