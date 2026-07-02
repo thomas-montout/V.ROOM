@@ -19,11 +19,11 @@ export default function VehiclePriceCard({ vehicle, onVBot }: Props) {
   ];
 
   return (
-    <aside className="sticky top-24 self-start">
+    <aside className="lg:sticky lg:top-24 self-start">
       <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-vroom-ink4">
         {vehicle.brand}
       </div>
-      <h1 className="font-serif text-[52px] font-normal mt-2 mb-3 leading-[1.05] tracking-[-0.01em]">
+      <h1 className="font-serif text-[36px] sm:text-[44px] lg:text-[52px] font-normal mt-2 mb-3 leading-[1.05] tracking-[-0.01em]">
         {vehicle.model}
       </h1>
 

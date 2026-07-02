@@ -23,18 +23,18 @@ export default function NewVehiclesPage() {
 
   return (
     <div className="min-h-screen bg-vroom-bg font-sans text-vroom-ink">
-      <div className="px-14 pt-14 pb-10 border-b border-vroom-line bg-white">
+      <div className="px-5 sm:px-8 lg:px-14 pt-14 pb-10 border-b border-vroom-line bg-white">
         <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
           Catalogue — Neufs
         </div>
-        <h1 className="font-serif text-[54px] font-normal m-0 leading-[1.05] tracking-[-0.01em]">
+        <h1 className="font-serif text-[34px] sm:text-[44px] lg:text-[54px] font-normal m-0 leading-[1.05] tracking-[-0.01em]">
           Les neufs du moment.
         </h1>
       </div>
 
       <FilterBar count={filtered.length} />
 
-      <section className="px-14 py-12">
+      <section className="px-5 sm:px-8 lg:px-14 py-12">
         {isLoading && (
           <div className="flex items-center justify-center py-24 font-mono text-[12px] tracking-widest uppercase text-vroom-ink4">
             Chargement…
@@ -49,7 +49,7 @@ export default function NewVehiclesPage() {
           <p className="text-vroom-ink3 py-8">Aucun véhicule neuf pour ces filtres.</p>
         )}
         {!isLoading && !error && filtered.length > 0 && (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((v) => (
               <VehicleCard key={v.id} vehicle={v} />
             ))}

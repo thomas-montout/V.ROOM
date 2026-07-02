@@ -10,12 +10,12 @@ export default function FilterBar({ count }: { count?: number }) {
   const total = count ?? vehicles.length;
 
   return (
-    <div className="flex items-center gap-0 px-14 py-5 border-t border-b border-vroom-line bg-white">
-      <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-vroom-ink4 mr-7 shrink-0">
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-4 px-5 sm:px-8 lg:px-14 py-5 border-t border-b border-vroom-line bg-white">
+      <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-vroom-ink4 shrink-0">
         Filtres
       </span>
 
-      <div className="flex gap-3 flex-1">
+      <div className="grid grid-cols-2 gap-3 w-full sm:flex sm:flex-wrap sm:w-auto sm:flex-1">
         <FilterSelect
           label="Type"
           value={filter.type || "Tous"}
@@ -70,7 +70,7 @@ function FilterSelect({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="appearance-none bg-transparent border border-vroom-line rounded px-4 py-2 text-[14px] text-vroom-ink cursor-pointer font-sans pr-7"
+        className="appearance-none bg-transparent border border-vroom-line rounded px-4 py-2 text-[14px] text-vroom-ink cursor-pointer font-sans pr-7 w-full sm:w-auto"
       >
         {options.map((o) => (
           <option key={o} value={o}>

@@ -75,7 +75,7 @@ export default function ProductPage() {
   return (
     <div className="min-h-screen bg-vroom-bg font-sans text-vroom-ink">
       {/* Breadcrumb */}
-      <div className="px-14 py-5 border-b border-vroom-line bg-white text-[12px] text-vroom-ink3 flex gap-2">
+      <div className="px-5 sm:px-8 lg:px-14 py-5 border-b border-vroom-line bg-white text-[12px] text-vroom-ink3 flex flex-wrap gap-2">
         {breadcrumb.map((crumb, i) => (
           <span key={i} className="flex items-center gap-2">
             {i > 0 && <span className="text-vroom-ink4">/</span>}
@@ -94,7 +94,7 @@ export default function ProductPage() {
       </div>
 
       {/* Hero produit */}
-      <section className="grid grid-cols-[1fr_480px] gap-14 px-14 py-14">
+      <section className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-8 lg:gap-14 px-5 sm:px-8 lg:px-14 py-8 lg:py-14">
         <VehicleGallery
           images={vehicle.images}
           alt={`${vehicle.brand} ${vehicle.model}`}
@@ -108,11 +108,11 @@ export default function ProductPage() {
 
       {/* Vidéo */}
       {vehicle.video && (
-        <section className="px-14 py-14 bg-[#0a0a0a]">
+        <section className="px-5 sm:px-8 lg:px-14 py-14 bg-[#0a0a0a]">
           <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
             Vidéo
           </div>
-          <h2 className="font-serif text-[32px] font-normal mb-8 tracking-[-0.005em] text-white">
+          <h2 className="font-serif text-[26px] sm:text-[32px] font-normal mb-8 tracking-[-0.005em] text-white">
             En mouvement.
           </h2>
           <div className="aspect-video w-full max-w-4xl">
@@ -127,14 +127,14 @@ export default function ProductPage() {
 
       {/* Modèles similaires */}
       {similar.length > 0 && (
-        <section className="px-14 py-18">
+        <section className="px-5 sm:px-8 lg:px-14 py-18">
           <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
             Aussi pour vous
           </div>
-          <h2 className="font-serif text-[38px] font-normal mb-9 tracking-[-0.005em]">
+          <h2 className="font-serif text-[28px] sm:text-[34px] lg:text-[38px] font-normal mb-9 tracking-[-0.005em]">
             Modèles similaires.
           </h2>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {similar.map((v) => (
               <VehicleCard key={v.id} vehicle={v} />
             ))}

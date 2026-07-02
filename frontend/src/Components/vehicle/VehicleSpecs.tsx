@@ -16,15 +16,15 @@ export default function VehicleSpecs({ vehicle }: { vehicle: Vehicle }) {
   ];
 
   return (
-    <section className="bg-white px-14 py-18 border-t border-b border-vroom-line">
+    <section className="bg-white px-5 sm:px-8 lg:px-14 py-18 border-t border-b border-vroom-line">
       <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
         Spécifications
       </div>
-      <h2 className="font-serif text-[38px] font-normal mb-10 tracking-[-0.005em]">
+      <h2 className="font-serif text-[28px] sm:text-[34px] lg:text-[38px] font-normal mb-10 tracking-[-0.005em]">
         Caractéristiques techniques.
       </h2>
 
-      <div className="grid grid-cols-2 gap-x-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16">
         {specs.map(([k, v]) => (
           <div
             key={k}
@@ -41,7 +41,7 @@ export default function VehicleSpecs({ vehicle }: { vehicle: Vehicle }) {
           <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-vroom-accent mb-3">
             ◆ Véhicule d'occasion
           </div>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div>
               <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-vroom-ink4">
                 Kilométrage

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
-    <section className="relative h-155 overflow-hidden bg-[#0a0a0a]">
+    <section className="relative h-[70vh] min-h-110 md:h-155 overflow-hidden bg-[#0a0a0a]">
       <video
         className="absolute inset-0 w-full h-full object-cover opacity-55"
         autoPlay
@@ -14,7 +14,7 @@ export default function Hero() {
       </video>
       <div className="absolute inset-0 bg-linear-to-b from-[rgba(10,10,10,0.2)] to-[rgba(10,10,10,0.7)]" />
 
-      <div className="relative z-10 px-14 pt-30 pb-14 mt-55 text-white max-w-225">
+      <div className="relative z-10 px-5 sm:px-8 lg:px-14 pt-20 md:pt-30 pb-14 mt-28 sm:mt-40 md:mt-55 text-white max-w-225">
         <div className="font-mono text-[11px] tracking-[0.25em] uppercase text-vroom-accent mb-6">
           ◆ V.ROOM ◆
         </div>
@@ -23,7 +23,7 @@ export default function Hero() {
           V.BOT vous guide parmi des modèles neufs et d'occasion, en quelques
           questions.
         </p>
-        <div className="flex gap-3.5 mt-9">
+        <div className="flex flex-col sm:flex-row gap-3.5 mt-9">
           <Link
             to="/"
             className="bg-vroom-accent text-white px-8 py-4 text-[14px] font-medium tracking-wider no-underline inline-flex items-center gap-2.5 rounded hover:bg-vroom-accent-hover transition-colors"

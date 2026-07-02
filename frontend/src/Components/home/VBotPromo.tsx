@@ -30,13 +30,13 @@ const DEMO_MSGS = [
 
 export default function VBotPromo({ onOpen }: { onOpen: () => void }) {
   return (
-    <section className="bg-[#0a0a0a] text-white px-14 py-20 my-6">
-      <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-center">
+    <section className="bg-[#0a0a0a] text-white px-5 sm:px-8 lg:px-14 py-20 my-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16 items-center">
         <div>
           <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-4">
             ◆ Assistant IA
           </div>
-          <h2 className="font-serif text-[56px] font-normal leading-[1.05] tracking-[-0.01em] m-0">
+          <h2 className="font-serif text-[34px] sm:text-[44px] lg:text-[56px] font-normal leading-[1.05] tracking-[-0.01em] m-0">
             V.BOT trouve la voiture
             <br />
             que vous n'aviez pas{" "}

@@ -30,7 +30,7 @@ export default function VBotChat({
   }
 
   return (
-    <div className="fixed right-8 bottom-8 z-41 w-105 h-145 bg-white border border-vroom-line rounded-lg shadow-[0_16px_48px_rgba(0,0,0,0.18),0_2px_8px_rgba(0,0,0,0.06)] flex flex-col overflow-hidden">
+    <div className="fixed z-41 inset-x-4 bottom-4 h-[75vh] sm:inset-x-auto sm:right-8 sm:bottom-8 sm:w-105 sm:h-145 bg-white border border-vroom-line rounded-lg shadow-[0_16px_48px_rgba(0,0,0,0.18),0_2px_8px_rgba(0,0,0,0.06)] flex flex-col overflow-hidden">
       {/* Header */}
       <header className="flex justify-between items-center px-5 py-4 bg-[#0a0a0a] text-white shrink-0">
         <div className="flex items-center gap-3">

@@ -65,13 +65,13 @@ export default function HomePage() {
       {!isLoading && !error && (
         <>
           {/* Section Neufs */}
-          <section className="px-14 pt-18 pb-12">
-            <div className="flex justify-between items-end mb-9">
+          <section className="px-5 sm:px-8 lg:px-14 pt-18 pb-12">
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end mb-9">
               <div>
                 <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
                   01 — Nouveautés
                 </div>
-                <h2 className="font-serif text-[42px] font-normal m-0 tracking-[-0.005em]">
+                <h2 className="font-serif text-[30px] sm:text-[36px] lg:text-[42px] font-normal m-0 tracking-[-0.005em]">
                   Les neufs du moment.
                 </h2>
               </div>
@@ -83,7 +83,7 @@ export default function HomePage() {
               </Link>
             </div>
             {filteredNew.length > 0 ? (
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredNew.slice(0, 3).map((v) => (
                   <VehicleCard key={v.id} vehicle={v} />
                 ))}
@@ -98,13 +98,13 @@ export default function HomePage() {
           <VBotPromo onOpen={() => setBotOpen(true)} />
 
           {/* Section Occasions */}
-          <section className="px-14 py-18">
-            <div className="flex justify-between items-end mb-9">
+          <section className="px-5 sm:px-8 lg:px-14 py-18">
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end mb-9">
               <div>
                 <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-vroom-accent mb-3">
                   02 — Sélection
                 </div>
-                <h2 className="font-serif text-[42px] font-normal m-0 tracking-[-0.005em]">
+                <h2 className="font-serif text-[30px] sm:text-[36px] lg:text-[42px] font-normal m-0 tracking-[-0.005em]">
                   Occasions & bons plans.
                 </h2>
               </div>
@@ -116,7 +116,7 @@ export default function HomePage() {
               </Link>
             </div>
             {filteredUsed.length > 0 ? (
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredUsed.slice(0, 3).map((v) => (
                   <VehicleCard key={v.id} vehicle={v} />
                 ))}
