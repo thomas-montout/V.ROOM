@@ -14,8 +14,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Apache : garantir un seul MPM (prefork, requis par mod_php) + rewrite + vhost vers public/
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf \
-    && a2enmod mpm_prefork rewrite
+# cache-bust: 2026-07-02-2 (le cache de build Railway resservait une couche périmée)
+RUN set -eux; \
+    rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf; \
+    a2enmod mpm_prefork rewrite; \
+    echo "MPM actifs au build:"; (apache2ctl -M 2>/dev/null | grep -i mpm || true)
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/html
