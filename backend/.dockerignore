@@ -1,0 +1,11 @@
+# Fichiers/dossiers à ne PAS copier dans l'image (recréés au build)
+.git/
+var/
+vendor/
+tests/
+.env.local
+.env.*.local
+compose.yaml
+compose.override.yaml
+Dockerfile
+.dockerignore
