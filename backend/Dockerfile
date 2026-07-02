@@ -13,8 +13,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Composer (copié depuis l'image officielle)
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Apache : rewrite + vhost pointant vers public/
-RUN a2enmod rewrite
+# Apache : un seul MPM (prefork requis par mod_php) + rewrite + vhost vers public/
+RUN a2dismod mpm_event mpm_worker >/dev/null 2>&1 || true; \
+    a2enmod mpm_prefork rewrite
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/html
