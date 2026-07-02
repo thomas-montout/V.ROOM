@@ -34,6 +34,10 @@ RUN composer install --no-dev --no-scripts --no-progress \
 # 2) Code source de l'application
 COPY . .
 
+# .env est gitignoré dans ce projet : symfony/runtime exige néanmoins sa présence.
+# On en crée un minimal s'il est absent (les vraies variables Railway priment dessus).
+RUN [ -f .env ] || printf 'APP_ENV=prod\n' > .env
+
 # 3) Autoloader optimisé + préchauffage du cache prod
 RUN composer dump-autoload --no-dev --optimize --classmap-authoritative \
     && php bin/console cache:clear --no-warmup \
