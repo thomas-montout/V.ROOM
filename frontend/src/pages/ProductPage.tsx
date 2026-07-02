@@ -10,7 +10,7 @@ import VehicleCard from "../Components/vehicle/VehicleCard";
 import VBotFAB from "../Components/vbot/VBotFAB";
 import VBotChat from "../Components/vbot/VBotChat";
 import { useVBot } from "../Components/vbot/useVBot";
-import { isNew, isUsed } from "../types/vehicle";
+import { isNew } from "../types/vehicle";
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
